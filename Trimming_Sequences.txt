@@ -1,32 +1,32 @@
 please do
 
-$Sel1 = select in 0 pos 0;
-$Num1 = num($Sel1);
+$Sel1 = select in 0 pos 0;  # Selection of the AA residue at the starting (0) absolute position in the first AA sequence (layer) and getting the selection into the Sel1 variable.
+$Num1 = num($Sel1);  # The number of the previously selected AA residue (group) is being assigned to the Num1 variable.
 
-$Sel2 = select in 1 pos 0;
+$Sel2 = select in 1 pos 0;  # Selection of the AA residue at the starting absolute position in the second AA sequence and getting the selection into the Sel2 variable.
 $Num2 = num($Sel2);
 
 if ($Num1 < $Num2)
 {
   $i = 0;
-  while ($Num1 < $Num2)
+  while ($Num1 < $Num2)  # Checking whether the Num1 variable is less than the Num2 variable; if so, the following block is executed.
   {
-    delete $Sel1;
-    $i++;
-    $Sel1 = select in 0 pos $i;
-    $Num1 = num($Sel1);
+    delete $Sel1;  # Deletion of the previously selected AA residue from the first AA sequence.
+    $i++;  # Incrementation of the i variable.
+    $Sel1 = select in 0 pos $i;  # Selection of the AA residue at the next absolute position in the first AA sequence and getting the selection into the Sel1 variable.
+    $Num1 = num($Sel1);  # The number of the previously selected AA residue is being assigned to the Num1 variable.
   }
 }
-else
+else  # If variable Num1 is equal or greater than variable Num2, then the following block is executed.
 {
-  if ($Num1 > $Num2)
+  if ($Num1 > $Num2)  # The following block is executed when variable Num1 is greater than variable Num2.
   {
     $j = 0;
-	while ($Num2 < $Num1)
+    while ($Num2 < $Num1)  # Checking whether the Num2 variable is less than the Num1 variable; if so, the following block is executed.
     {
-      delete $Sel2;
-      $j++;
-      $Sel2 = select in 1 pos $j;
+      delete $Sel2;  # Deletion of the previously selected AA residue from the second AA sequence.
+      $j++;  # Incrementation of the j variable.
+      $Sel2 = select in 1 pos $j;  # Selection of the AA residue at the next absolute position in the second AA sequence and getting the selection into the Sel2 variable.
       $Num2 = num($Sel2);
     }
   }
